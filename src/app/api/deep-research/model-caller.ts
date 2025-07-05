@@ -8,7 +8,7 @@ import { delay } from "./utils";
 export async function CallModel<T>({
     model,prompt,system,schema,activityType="generate"
 }:ModelCallOptions<T>,
-researchState:ResearchState,activityTracker:ActivityTracker):Promise <T | String> {
+researchState:ResearchState,activityTracker:ActivityTracker):Promise <T | string> {
 
   let attempts=0
   let lastError:Error | null =null
