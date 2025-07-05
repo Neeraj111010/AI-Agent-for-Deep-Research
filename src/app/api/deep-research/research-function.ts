@@ -1,5 +1,5 @@
 import { ActivityTracker, ResearchFindings, ResearchState, SearchResult } from "./types";
-import { exa, openrouter } from "./services";
+import { exa} from "./services";
 import { z } from "zod";
 import { CallModel } from "./model-caller";
 import { ANALYSIS_SYSTEM_PROMPT, EXTRACTION_SYSTEM_PROMPT, getAnalysisPrompt, getExtractionPrompt, getPlanningPrompt, getReportPrompt, PLANNING_SYSTEM_PROMPT, REPORT_SYSTEM_PROMPT } from "./prompts";
