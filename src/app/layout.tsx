@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Dancing_Script, Geist, Geist_Mono,Inter } from "next/font/google";
+import { Dancing_Script,Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
