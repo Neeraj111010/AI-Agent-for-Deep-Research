@@ -1,20 +1,13 @@
 "use client";
+
 import { useDeepResearchStore } from "@/store/deepResearch";
-import React, { ComponentPropsWithRef } from "react";
+import React from "react";
 import { Card } from "../ui/card";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import {
-  Prism as SyntaxHighlighter,
-  SyntaxHighlighterProps,
-} from "react-syntax-highlighter";
-import { nightOwl } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { Download } from "lucide-react";
 import { Button } from "../ui/button";
 
-type CodeProps = ComponentPropsWithRef<"code"> & {
-  inline?: boolean;
-};
 
 const ResearchReport = () => {
   const { report, isCompleted, isLoading, topic } = useDeepResearchStore();
@@ -49,11 +42,11 @@ const ResearchReport = () => {
 
   if (report.length <= 0) return null;
 
+  const markdownContent = report.split("<report>")[1].split("</report>")[0];
+
   return (
     <Card
-      className="max-w-[90vw] xl:max-w-[60vw] relative px-4 py-6 rounded-xl border-black/10 border-solid shadow-none p-6
-     bg-white/60 backdrop-blur-xl border antialiased
-    "
+      className="max-w-[90vw] xl:max-w-[60vw] relative px-4 py-6 rounded-xl border-black/10 border-solid shadow-none p-6 bg-white/60 backdrop-blur-xl border antialiased"
     >
       <div className="flex justify-end gap-2 mb-4 absolute top-4 right-4">
         <Button
@@ -68,31 +61,8 @@ const ResearchReport = () => {
       <div className="prose prose-sm md:prose-base max-w-none prose-pre:p-2 overflow-x-scroll">
         <Markdown
           remarkPlugins={[remarkGfm]}
-          components={{
-            code({ className, children, inline, ...props }: CodeProps) {
-              const match = /language-(\w+)/.exec(className || "");
-              const language = match ? match[1] : "";
-
-              if (!inline && language) {
-                const SyntaxHighlighterProps: SyntaxHighlighterProps = {
-                  style: nightOwl,
-                  language,
-                  PreTag: "div",
-                  children: String(children).replace(/\n$/, ""),
-                };
-
-                return <SyntaxHighlighter {...SyntaxHighlighterProps} />;
-              }
-
-              return (
-                <code className={className} {...props}>
-                  {children}
-                </code>
-              );
-            },
-          }}
         >
-          {report.split("<report>")[1].split("</report>")[0]}
+          {markdownContent}
         </Markdown>
       </div>
     </Card>
