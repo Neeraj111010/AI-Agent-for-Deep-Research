@@ -1,4 +1,3 @@
-import { timeStamp } from "console";
 import { MAX_ITERATIONS } from "./constants";
 import { analyzeFindings, generateReport, generateSearchQueries, processSearchResults, search } from "./research-function";
 import { ResearchState } from "./types";
