@@ -30,5 +30,5 @@ A modern AI-powered agent application built with **Next.js**, **TypeScript**, an
 ## ⚙️ Environment Variables Setup (`.env.local`)  
 
 ```env
-NEXT_PUBLIC_OPENROUTER_API_KEY=your_openrouter_api_key
-NEXT_PUBLIC_EXA_SEARCH_API_KEY=your_exa_search_api_key
+OPENROUTER_API_KEY=your_openrouter_api_key
+EXA_SEARCH_API_KEY=your_exa_search_api_key
